@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.samples.pck.spring-jasypt-env-config</groupId>
 	<artifactId>spring-jasypt-env-config</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1-SNAPSHOT</version> 
 	<name>spring-jasypt-env-config</name>
 	<description>Sample project for Spring Boot with Jasypt and passing Jasypt settings and encryption using environment variables</description>
 
@@ -27,7 +27,12 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
+		<dependency>
+        	<groupId>com.github.ulisesbocchio</groupId>
+        	<artifactId>jasypt-spring-boot-starter</artifactId>
+        	<version>2.1.2</version>
+		</dependency>
+		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
