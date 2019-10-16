@@ -17,12 +17,16 @@ spec:
         env:
         - name: JAVA_OPTS
           value: -Xms128m -Xmx512m -XX:PermSize=128m -XX:MaxPermSize=128m -XX:+UseG1GC -Djava.security.egd=file:/dev/urandom
-        - name: DT_TAGS
-          value: "product=springjasypt"
-        - name: DT_CUSTOM_PROP
-          value: "SERVICE_TYPE=BACKEND"
-        - name: DT_NODE_ID
-          value: to-be-replaced-by-jenkins
+        - name: MYSQL_DB_USER
+          value: "ENC(1cWxyUbkZeqw+LYA/LyRhg==)"
+        - name: MYSQL_DB_SERVER
+          value: "localhost"
+        - name: MYSQL_DB_PASSWD
+          value: "ENC(wUVs1lmbkgB7OqSPhKeFKVTY8siHCoag)"
+        - name: JASYPT_ENCRYPTOR_ALGORITHM
+          value: "PBEWithMD5AndDES"
+        - name: JASYPT_ENCRYPTOR_PASSWORD
+          value: "Password"
         ports:
         - containerPort: 8088
         securityContext:
