@@ -13,14 +13,14 @@ spec:
     spec:
       containers:
       - name: springjasypt
-        image: to-be-replaced-by-jenkins
+        image: <containerrepourlforimage>
         env:
         - name: JAVA_OPTS
           value: -Xms128m -Xmx512m -XX:PermSize=128m -XX:MaxPermSize=128m -XX:+UseG1GC -Djava.security.egd=file:/dev/urandom
         - name: MYSQL_DB_USER
           value: "ENC(1cWxyUbkZeqw+LYA/LyRhg==)"
         - name: MYSQL_DB_SERVER
-          value: "localhost"
+          value: "<databasehostname or ip>"
         - name: MYSQL_DB_PASSWD
           value: "ENC(wUVs1lmbkgB7OqSPhKeFKVTY8siHCoag)"
         - name: JASYPT_ENCRYPTOR_ALGORITHM
