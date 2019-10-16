@@ -1,0 +1,45 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: springjasypt
+  namespace: samples
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: springjasypt
+        version: v1
+    spec:
+      containers:
+      - name: springjasypt
+        image: to-be-replaced-by-jenkins
+        env:
+        - name: JAVA_OPTS
+          value: -Xms128m -Xmx512m -XX:PermSize=128m -XX:MaxPermSize=128m -XX:+UseG1GC -Djava.security.egd=file:/dev/urandom
+        - name: DT_TAGS
+          value: "product=springjasypt"
+        - name: DT_CUSTOM_PROP
+          value: "SERVICE_TYPE=BACKEND"
+        - name: DT_NODE_ID
+          value: to-be-replaced-by-jenkins
+        ports:
+        - containerPort: 8088
+        securityContext:
+          runAsNonRoot: true
+          runAsUser: 10001
+          capabilities:
+            drop:
+              - all
+            add:
+              - NET_BIND_SERVICE
+          readOnlyRootFilesystem: true
+        volumeMounts:
+        - mountPath: /tmp
+          name: tmp-volume
+      volumes:
+        - name: tmp-volume
+          emptyDir:
+            medium: Memory
+      nodeSelector:
+        beta.kubernetes.io/os: linux
