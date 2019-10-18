@@ -97,8 +97,35 @@ export JASYPT_ENCRYPTOR_PASSWORD=Password
 ##### Setup Windows environment as follows 
 Go to Control Panel\All Control Panel Items\System and click on Advanced system settings. In the system properties window click on "Environment Variables" button. Add the five variables as shown below
 
-<p><img src="https://github.com/prashantkumashi/spring-jasypt-env-config/raw/master/WindowsEnv.PNG"/></p>
+<p><img src="https://github.com/prashantkumashi/spring-jasypt-env-config/raw/master/images/WindowsEnv.PNG"/></p>
 
 ### Review the application.properties and Jasypt Bean definition 
+##### Check ```src/main/resources/application.properties``` file, it should reference the variables defined
+```
+spring.application.name=spring-jasypt-env-config
+
+spring.datasource.url=jdbc:mysql://${_MYSQL_DB_SERVER_}:3306/testdb
+spring.datasource.username=${_MYSQL_DB_USER_}
+spring.datasource.password=${_MYSQL_DB_PASSWD_}
+spring.datasource.tomcat.max-wait=20000
+spring.datasource.tomcat.max-active=15
+spring.datasource.tomcat.max-idle=10
+spring.datasource.tomcat.min-idle=5
+
+spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MySQLDialect
+spring.jpa.properties.hibernate.id.new_generator_mappings = false
+spring.jpa.properties.hibernate.format_sql = false
+
+logging.level.org.hibernate.SQL=DEBUG
+logging.level.org.hibernate.type.descriptor.sql.BasicBinder=INFO
+logging.level.com.concretepage= INFO
+
+spring.main.allow-bean-definition-overriding=true 
+
+server.port=8088
+
+jasypt.encryptor.algorithm=${_JASYPT_ENCRYPTOR_ALGORITHM_}
+jasypt.encryptor.password=${_JASYPT_ENCRYPTOR_PASSWORD_}
+```
 ### Build your code 
 ### Test your application 
