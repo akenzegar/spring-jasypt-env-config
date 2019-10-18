@@ -35,7 +35,7 @@ CREATE TABLE `users` (
 );
 ```
 ### Run JASYPT command to encrypt your database user id and password 
-Run following command for encrypting database user id. 
+##### Run following command for encrypting database user id. 
 > Note: If you do not have JASYCPT jar file in your local maven repository, you can choose to download from ```http://www.jasypt.org/download.html```. 
 
 ```
@@ -60,7 +60,7 @@ algorithm: PBEWithMD5AndDES
 2QOhTWf7XCnYDK2lI/eIOA==
 ```
 
-Run the tool again for you password encryption 
+##### Run the tool again for you password encryption 
 ```
 java -cp ~/.m2/repository/org/jasypt/jasypt/1.9.3/jasypt-1.9.3.jar  org.jasypt.intf.cli.JasyptPBEStringEncryptionCLI input="apppasswd123" password=Password algorithm=PBEWithMD5AndDES
 
