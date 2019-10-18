@@ -104,9 +104,9 @@ Go to Control Panel\All Control Panel Items\System and click on Advanced system 
 ```
 spring.application.name=spring-jasypt-env-config
 
-spring.datasource.url=jdbc:mysql://${_MYSQL_DB_SERVER_}:3306/testdb
-spring.datasource.username=${_MYSQL_DB_USER_}
-spring.datasource.password=${_MYSQL_DB_PASSWD_}
+spring.datasource.url=jdbc:mysql://${MYSQL_DB_SERVER}:3306/testdb
+spring.datasource.username=${MYSQL_DB_USER}
+spring.datasource.password=${MYSQL_DB_PASSWD}
 spring.datasource.tomcat.max-wait=20000
 spring.datasource.tomcat.max-active=15
 spring.datasource.tomcat.max-idle=10
@@ -124,8 +124,8 @@ spring.main.allow-bean-definition-overriding=true
 
 server.port=8088
 
-jasypt.encryptor.algorithm=${_JASYPT_ENCRYPTOR_ALGORITHM_}
-jasypt.encryptor.password=${_JASYPT_ENCRYPTOR_PASSWORD_}
+jasypt.encryptor.algorithm=${JASYPT_ENCRYPTOR_ALGORITHM}
+jasypt.encryptor.password=${JASYPT_ENCRYPTOR_PASSWORD}
 ```
 ### Build your code 
 ### Test your application 
