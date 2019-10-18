@@ -97,7 +97,7 @@ export JASYPT_ENCRYPTOR_PASSWORD=Password
 ##### Setup Windows environment as follows 
 Go to Control Panel\All Control Panel Items\System and click on Advanced system settings. In the system properties window click on "Environment Variables" button. Add the five variables as shown below
 
-[[https://github.com/prashantkumashi/spring-jasypt-env-config/raw/master/WindowsEnv.PNG|alt=Windows Environment Variables]]
+[[https://github.com/prashantkumashi/spring-jasypt-env-config/raw/master/WindowsEnv.PNG]]
 
 ### Review the application.properties and Jasypt Bean definition 
 ### Build your code 
