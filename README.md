@@ -1,9 +1,8 @@
-# spring-jasypt-env-config
-Spring and Jasypt integration with externalized Jasypt properties and passwords
+# Spring-boot and Jasypt integration with externalized Jasypt properties and passwords 
 
 One of the most important aspect of 12-factor coding standards is externalization of environment specific variables. We will cover how we can easily achieve this using Spring Boot. We will also use JASYPT framework to encrypt these environment variables. 
 
-We will be performing following steps:
+##### We will be performing following steps:
 - Download this source code 
 - Create database, database user and table 
 - Run JASYPT command to encrypt your user id and password 
@@ -164,4 +163,52 @@ $ mvn clean install
 [INFO] ------------------------------------------------------------------------
 ```
 ### Test your application 
+Run ```mvn spring-boot:run``` to run the application
 
+```
+$ mvn spring-boot:run 
+[INFO] Scanning for projects...
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building spring-jasypt-env-config 0.0.1-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] >>> spring-boot-maven-plugin:2.1.9.RELEASE:run (default-cli) > test-compile @ spring-jasypt-env-config >>>
+...
+...
+...
+...
+...
+2019-10-18 14:41:38.287  INFO 6149 --- [  restartedMain] org.hibernate.Version                    : HHH000412: Hibernate Core {5.3.12.Final}
+2019-10-18 14:41:38.293  INFO 6149 --- [  restartedMain] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2019-10-18 14:41:38.607  INFO 6149 --- [  restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-10-18 14:41:38.948  INFO 6149 --- [  restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2019-10-18 14:41:40.280  INFO 6149 --- [  restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-10-18 14:41:40.993  WARN 6149 --- [  restartedMain] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+config
+2019-10-18 14:41:41.864  INFO 6149 --- [  restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2019-10-18 14:41:41.999  INFO 6149 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8088 (http) with context path ''
+2019-10-18 14:41:42.005  INFO 6149 --- [  restartedMain] c.s.p.s.SpringJasyptEnvConfigApplication : Started SpringJasyptEnvConfigApplication in 10.96 seconds (JVM running for 11.921)
+```
+
+Run the ```curl``` command to add sample data
+```
+$ curl -d '{"username":"ironman","userType":"enduser"}' 'http://localhost:8088/user' --header "Content-Type: application/json"
+
+{"userId":2,"username":"ironman","userType":"enduser"}
+```
+
+```
+$ curl -d '{"username":"hulk","userType":"enduser"}' 'http://localhost:8088/user' --header "Content-Type: application/json"
+
+{"userId":3,"username":"hulk","userType":"enduser"}
+```
+
+Check the results by fetching all results
+```
+$ curl 'http://localhost:8088/user/1'
+{"userId":1,"username":"ironman","userType":"enduser"}
+```
+
+
+## Part 2 - We will be covering setting up environment variables using Docker and deploy on a Kubernetes cluster
