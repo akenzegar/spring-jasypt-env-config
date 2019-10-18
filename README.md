@@ -86,6 +86,19 @@ PxSPx1RxhGIoFlBbWLla5YlqpI68w4la
 > IMPORTANT: You can also add other command line options for further hardening your encryption, the options chosen for encryptions should also be configured in the JASYPT encryptor configuration in your java bean definition. For more details go to http://www.jasypt.org/index.html 
 
 ### Configure environment variables - Windows / Linux 
+##### Setup Linux environment as follows, these variables are used in application.properties file
+```
+export MYSQL_DB_SERVER=10.138.0.2
+export MYSQL_DB_USER="ENC(2QOhTWf7XCnYDK2lI/eIOA==)"
+export MYSQL_DB_PASSWD="ENC(PxSPx1RxhGIoFlBbWLla5YlqpI68w4la)"
+export JASYPT_ENCRYPTOR_ALGORITHM=PBEWithMD5AndDES
+export JASYPT_ENCRYPTOR_PASSWORD=Password
+```
+##### Setup Windows environment as follows 
+Go to Control Panel\All Control Panel Items\System and click on Advanced system settings. In the system properties window click on "Environment Variables" button. Add the five variables as shown below
+
+[[https://github.com/prashantkumashi/spring-jasypt-env-config/raw/master/WindowsEnv.PNG|alt=Windows Environment Variables]]
+
 ### Review the application.properties and Jasypt Bean definition 
 ### Build your code 
 ### Test your application 
