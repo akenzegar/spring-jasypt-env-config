@@ -12,23 +12,22 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @EnableWebMvc
 public class SpringJasyptEnvConfigApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(SpringJasyptEnvConfigApplication.class, args);
-	}
-	
-	@Autowired
-	Environment env;
-	
-    public String getProperty(String pPropertyKey) {
-        return env.getProperty(pPropertyKey);
-    }
+   public static void main(String[] args) {
+      SpringApplication.run(SpringJasyptEnvConfigApplication.class, args);
+   }
+
+   @Autowired
+   Environment env;
+
+   public String getProperty(String pPropertyKey) {
+      return env.getProperty(pPropertyKey);
+   }
     
-	@Bean
-	public EnvironmentStringPBEConfig environmentStringPBEConfig() {
-		EnvironmentStringPBEConfig config = new EnvironmentStringPBEConfig();
-		config.setAlgorithm("jasypt.encryptor.algorithm");
-		config.setPasswordEnvName("jasypt.encryptor.password");
-		System.out.println("config");
-		return config;
-	}
+   @Bean
+   public EnvironmentStringPBEConfig environmentStringPBEConfig() {
+       EnvironmentStringPBEConfig config = new EnvironmentStringPBEConfig();
+       config.setAlgorithm("jasypt.encryptor.algorithm");
+       config.setPasswordEnvName("jasypt.encryptor.password");
+       return config;
+   }
 }
