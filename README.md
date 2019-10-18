@@ -88,7 +88,7 @@ PxSPx1RxhGIoFlBbWLla5YlqpI68w4la
 ### Configure environment variables - Windows / Linux 
 ##### Setup Linux environment as follows, these variables are used in application.properties file
 ```
-export MYSQL_DB_SERVER=10.138.0.2
+export MYSQL_DB_SERVER=NN.NN.NN.NN
 export MYSQL_DB_USER="ENC(2QOhTWf7XCnYDK2lI/eIOA==)"
 export MYSQL_DB_PASSWD="ENC(PxSPx1RxhGIoFlBbWLla5YlqpI68w4la)"
 export JASYPT_ENCRYPTOR_ALGORITHM=PBEWithMD5AndDES
