@@ -127,5 +127,41 @@ server.port=8088
 jasypt.encryptor.algorithm=${JASYPT_ENCRYPTOR_ALGORITHM}
 jasypt.encryptor.password=${JASYPT_ENCRYPTOR_PASSWORD}
 ```
+
+##### Check ```src/main/java/com/samples/pck/springjasypt/SpringJasyptEnvConfigApplication.java``` file
+It has bean definition for EnvironmentStringPBEConfig. This object is a Jasypt configuration to read environment variables and set the Jasypt properties for alogorithm and other settings used.   
+
+```
+   @Bean
+   public EnvironmentStringPBEConfig environmentStringPBEConfig() {
+       EnvironmentStringPBEConfig config = new EnvironmentStringPBEConfig();
+       config.setAlgorithm("jasypt.encryptor.algorithm");
+       config.setPasswordEnvName("jasypt.encryptor.password");
+       return config;
+   }
+```
 ### Build your code 
+Run ```mvn clean install``` to build the code and create the distribution, if you are running it before setting the environment variables the unit tests would fail, add ```-DskipTests=true``` to skip tests. 
+
+```
+$ mvn clean install
+[INFO] Scanning for projects...
+[INFO]
+[INFO] --< com.samples.pck.spring-jasypt-env-config:spring-jasypt-env-config >--
+[INFO] Building spring-jasypt-env-config 0.0.1-SNAPSHOT
+...
+...
+...
+...
+[INFO] --- maven-install-plugin:2.5.2:install (default-install) @ spring-jasypt-env-config ---
+[INFO] Installing D:\ExamplesFromNet\mygit\spring-jasypt-env-config\target\spring-jasypt-env-config-0.0.1-SNAPSHOT.jar to C:\Users\pr20019686\.m2\repository\com\samples\pck\spring-jasypt-env-config\spring-jasypt-env-config\0.0.1-SNAPSHOT\spring-jasypt-env-config-0.0.1-SNAPSHOT.jar
+[INFO] Installing D:\ExamplesFromNet\mygit\spring-jasypt-env-config\pom.xml to C:\Users\pr20019686\.m2\repository\com\samples\pck\spring-jasypt-env-config\spring-jasypt-env-config\0.0.1-SNAPSHOT\spring-jasypt-env-config-0.0.1-SNAPSHOT.pom
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 01:32 min
+[INFO] Finished at: 2019-10-18T20:07:19+05:30
+[INFO] ------------------------------------------------------------------------
+```
 ### Test your application 
+
